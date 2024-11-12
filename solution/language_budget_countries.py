@@ -15,7 +15,7 @@ class LanguageBudgetCountries(MRJob):
         country = fields[3] 
         budget = self.to_float(fields[4]) 
 
-        if language != '' and country != '' and budget != 0:
+        if language not in['','-1'] and country != ['','-1'] and budget != 0:
             yield language, (country, budget)
             
     def reducer(self, language, values):
